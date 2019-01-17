@@ -1,0 +1,66 @@
+= Let's Gopher
+
+IMPORTANT: This project is just used for training purposes.
+
+Let's Gopher is a simple, yet flexible project generator for Go. The tool uses templates available in the directory `~/.lets-gopher/templates`. Users can create templates manually by creating directories and files as desired. Templates hosted on Git repositories can be downloaded and added to the template directory.
+
+== Installing a template
+
+The project doesn't come with any templates out-of-the-box. You need to install them yourself. The tool will report missing templates in the console output.
+
+----
+./lets-gopher
+2019/01/17 13:30:20 No templates found!
+----
+
+Templates can only be installed from a Git URL. To install a template, run the `install` command with the `--url` parameter. The tool will clone the repository.
+
+----
+./lets-gopher install --url="https://github.com/bmuschko/go-helloworld-template.git"
+2019/01/17 13:32:21 Cloning template from repository https://github.com/bmuschko/go-helloworld-template.git
+----
+
+Subsequent `install` operations pull the latest change from the originating repository.
+
+----
+./lets-gopher install --url="https://github.com/bmuschko/go-helloworld-template.git"
+2019/01/17 13:32:25 Pulling latest changes for existing template in /Users/bmuschko/.lets-gopher/templates/go-helloworld-template
+----
+
+Alternatively, you can just create a new directory under `~/.lets-gopher/templates` and populate it with files.
+
+== Generating projects from a template
+
+You can generate a new project from the template if at least one template can be found. The files of a selected template will be written to `$GOPATH/<base-path>`.
+
+----
+./lets-gopher
+? What template would you like to use to generate a project?  [Use arrows to move, type to filter]
+❯ go-helloworld-template
+You choose "go-helloworld-template"
+? What base path would like to use? github.com/bmuschko/helloworld
+You choose "github.com/bmuschko/helloworld"
+Generating project in "/Users/bmuschko/go/src/github.com/bmuschko/helloworld"
+----
+
+== Configuring default conventions
+
+You might get tired of having to spell out certain default values. For example, you'll likely want to use the same domain whenever you generate a new project. The tool can be configured in the file `~/.lets-gopher/.lets-gopher.yml`.
+
+[source,yaml]
+----
+domain: github.com/bmuschko
+----
+
+Configured default values are consumed as applicable but can still be reconfigured.
+
+----
+./lets-gopher
+? What template would you like to use to generate a project?  [Use arrows to move, type to filter]
+❯ go-helloworld-template
+You choose "go-helloworld-template"
+? What base path would like to use? (github.com/bmuschko/go-helloworld-template)
+You choose "github.com/bmuschko/go-helloworld-template"
+Generating project in "/Users/bmuschko/go/src/github.com/bmuschko/go-helloworld-template"
+----
+
