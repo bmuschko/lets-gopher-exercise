@@ -9,21 +9,21 @@ Let's Gopher is a simple, yet flexible project generator for Go. The tool uses t
 The project doesn't come with any templates out-of-the-box. You need to install them yourself. The tool will report missing templates in the console output.
 
 ----
-./lets-gopher
+go run main.go
 2019/01/17 13:30:20 No templates found!
 ----
 
 Templates can only be installed from a Git URL. To install a template, run the `install` command with the `--url` parameter. The tool will clone the repository.
 
 ----
-./lets-gopher install --url="https://github.com/bmuschko/go-helloworld-template.git"
+go run main.go install --url="https://github.com/bmuschko/go-helloworld-template.git"
 2019/01/17 13:32:21 Cloning template from repository https://github.com/bmuschko/go-helloworld-template.git
 ----
 
 Subsequent `install` operations pull the latest change from the originating repository.
 
 ----
-./lets-gopher install --url="https://github.com/bmuschko/go-helloworld-template.git"
+go run main.go install --url="https://github.com/bmuschko/go-helloworld-template.git"
 2019/01/17 13:32:25 Pulling latest changes for existing template in /Users/bmuschko/.lets-gopher/templates/go-helloworld-template
 ----
 
@@ -34,7 +34,7 @@ Alternatively, you can just create a new directory under `~/.lets-gopher/templat
 You can generate a new project from the template if at least one template can be found. The files of a selected template will be written to `$GOPATH/<base-path>`.
 
 ----
-./lets-gopher
+go run main.go
 ? What template would you like to use to generate a project?  [Use arrows to move, type to filter]
 ❯ go-helloworld-template
 You choose "go-helloworld-template"
@@ -55,7 +55,7 @@ domain: github.com/bmuschko
 Configured default values are consumed as applicable but can still be reconfigured.
 
 ----
-./lets-gopher
+go run main.go
 ? What template would you like to use to generate a project?  [Use arrows to move, type to filter]
 ❯ go-helloworld-template
 You choose "go-helloworld-template"
