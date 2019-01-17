@@ -8,14 +8,14 @@ import (
 	"path/filepath"
 )
 
-var ConfigHomeDir = filepath.Join(homeDir(), ".letsgopher")
+var ConfigHomeDir = filepath.Join(homeDir(), ".lets-gopher")
 
 type GenConfig struct {
 	Domain string `yaml:",omitempty"`
 }
 
 func Load() (config GenConfig, err error) {
-	configFile := filepath.Join(ConfigHomeDir, ".letsgopher.yml")
+	configFile := filepath.Join(ConfigHomeDir, ".lets-gopher.yml")
 	f, err := os.Open(configFile)
 	if err != nil {
 		return

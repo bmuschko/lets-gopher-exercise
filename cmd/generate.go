@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"sort"
 	"strings"
@@ -20,12 +21,16 @@ func doGenerateCmd(cmd *cobra.Command, args []string) {
 	availableTemplates := templ.ListTemplates()
 	availableTemplateNames := templateNames(availableTemplates)
 
-	core.SetFancyIcons()
-	selectedTemplateName := promptTemplate(availableTemplateNames)
-	defaultBasePath := buildDefaultBasePath(config, selectedTemplateName)
-	enteredBasePath := promptBasePath(defaultBasePath)
+	if len(availableTemplateNames) > 0 {
+		core.SetFancyIcons()
+		selectedTemplateName := promptTemplate(availableTemplateNames)
+		defaultBasePath := buildDefaultBasePath(config, selectedTemplateName)
+		enteredBasePath := promptBasePath(defaultBasePath)
 
-	templ.GenerateProject(availableTemplates[selectedTemplateName], enteredBasePath)
+		templ.GenerateProject(availableTemplates[selectedTemplateName], enteredBasePath)
+	} else {
+		log.Print("No templates found!")
+	}
 }
 
 func promptTemplate(templateNames []string) string {
