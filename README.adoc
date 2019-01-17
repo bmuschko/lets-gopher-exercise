@@ -31,7 +31,7 @@ Alternatively, you can just create a new directory under `~/.lets-gopher/templat
 
 == Generating projects from a template
 
-You can generate a new project from the template if at least one template can be found. The files of a selected template will be written to `$GOPATH/<base-path>`.
+You can generate a new project from the template if at least one template can be found. The files of a selected template will be written to `$GOPATH/src/<base-path>`.
 
 ----
 go run main.go
