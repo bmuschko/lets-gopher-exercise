@@ -1,12 +1,13 @@
 package remote
 
 import (
-	"github.com/bmuschko/lets-gopher/utils"
-	"gopkg.in/src-d/go-git.v4"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/bmuschko/lets-gopher-exercise/utils"
+	git "gopkg.in/src-d/go-git.v4"
 )
 
 type GitRepo struct {
@@ -27,7 +28,7 @@ func (g *GitRepo) Install() {
 func clone(repoUrl string, targetPath string) *git.Repository {
 	log.Printf("Cloning template from repository %s", repoUrl)
 	repo, err := git.PlainClone(targetPath, false, &git.CloneOptions{
-		URL: repoUrl,
+		URL:               repoUrl,
 		RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
 	})
 

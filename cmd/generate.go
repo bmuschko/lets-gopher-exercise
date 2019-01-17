@@ -2,14 +2,15 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/bmuschko/lets-gopher/templ"
-	"github.com/bmuschko/lets-gopher/utils"
-	"github.com/spf13/cobra"
-	"gopkg.in/AlecAivazis/survey.v1"
-	"gopkg.in/AlecAivazis/survey.v1/core"
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/bmuschko/lets-gopher-exercise/templ"
+	"github.com/bmuschko/lets-gopher-exercise/utils"
+	"github.com/spf13/cobra"
+	survey "gopkg.in/AlecAivazis/survey.v1"
+	"gopkg.in/AlecAivazis/survey.v1/core"
 )
 
 func doGenerateCmd(cmd *cobra.Command, args []string) {
@@ -86,4 +87,3 @@ func loadConfig() (templ.GenConfig, error) {
 
 	return config, nil
 }
-

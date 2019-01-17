@@ -2,10 +2,11 @@ package templ
 
 import (
 	"fmt"
-	"github.com/bmuschko/lets-gopher/utils"
 	"go/build"
 	"os"
 	"path/filepath"
+
+	"github.com/bmuschko/lets-gopher-exercise/utils"
 )
 
 func GenerateProject(templatePath string, goHomeBasePath string) {

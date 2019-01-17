@@ -1,10 +1,11 @@
 package templ
 
 import (
-	"github.com/bmuschko/lets-gopher/utils"
-	"github.com/mitchellh/go-homedir"
 	"io/ioutil"
 	"path/filepath"
+
+	"github.com/bmuschko/lets-gopher-exercise/utils"
+	homedir "github.com/mitchellh/go-homedir"
 )
 
 var TemplateDir = filepath.Join(ConfigHomeDir, "templates")
