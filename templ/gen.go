@@ -19,5 +19,6 @@ func GenerateProject(templatePath string, goHomeBasePath string) {
 	}
 
 	fmt.Printf("Generating project in %q\n", targetPath)
-	utils.CopyDir(templatePath, targetPath)
+	err := utils.CopyDir(templatePath, targetPath)
+	utils.CheckIfError(err)
 }

@@ -27,12 +27,18 @@ func CopyFile(src, dst string) error {
 	if srcfd, err = os.Open(src); err != nil {
 		return err
 	}
-	defer srcfd.Close()
+	defer func() {
+		err := srcfd.Close()
+		CheckIfError(err)
+	}()
 
 	if dstfd, err = os.Create(dst); err != nil {
 		return err
 	}
-	defer dstfd.Close()
+	defer func() {
+		err := dstfd.Close()
+		CheckIfError(err)
+	}()
 
 	if _, err = io.Copy(dstfd, srcfd); err != nil {
 		return err

@@ -21,7 +21,8 @@ var installCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(installCmd)
 	installCmd.PersistentFlags().StringVar(&repoUrl, "url", "", "template URL")
-	installCmd.MarkFlagRequired("url")
+	err := installCmd.MarkFlagRequired("url")
+	utils.CheckIfError(err)
 }
 
 func installTemplate(cmd *cobra.Command, args []string) {
@@ -34,9 +35,10 @@ func install(repoUrl string) {
 	var repo remote.Repository
 
 	if strings.HasSuffix(repoUrl, ".git") {
-		repo = &remote.GitRepo{repoUrl, templ.TemplateDir}
+		repo = &remote.GitRepo{RepoUrl: repoUrl, TargetPath: templ.TemplateDir}
 	} else {
-		errors.New("Currently templates can only be installed from a Git repository")
+		err := errors.New("Currently templates can only be installed from a Git repository")
+		utils.CheckIfError(err)
 	}
 
 	repo.Install()
