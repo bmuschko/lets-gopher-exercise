@@ -4,7 +4,7 @@ node {
     ws("${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}/src/github.com/bmuschko/lets-gopher-exercise") {
         withEnv(["GOROOT=${goHome}", "GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}/", "PATH+GO=${goHome}/bin"]) {
             stage('Checkout') {
-                git 'https://github.com/bmuschko/lets-gopher-exercise.git'
+                git branch: 'solution', url: 'https://github.com/bmuschko/lets-gopher-exercise.git'
             }
             stage('Prepare') {
                 sh 'go version'
