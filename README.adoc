@@ -1,6 +1,6 @@
 = Let's Gopher
 
-IMPORTANT: This code repository is used as an example project for the training https://github.com/bmuschko/go-project-automation/["Go project automation"]. It's not intended for real-world use. For a full-fledged Go project generator have a look at https://github.com/bmuschko/letsgopher["this repository"].
+IMPORTANT: This code repository is used as an example project for the training https://github.com/bmuschko/go-project-automation/["Go project automation"]. It's not intended for real-world use. For a full-fledged Go project generator have a look at https://github.com/bmuschko/letsgopher[this repository].
 
 Let's Gopher is a simple, yet flexible project generator for Go. The tool uses templates available in the directory `~/.lets-gopher/templates`. Users can create templates manually by creating directories and files as desired. Templates hosted on Git repositories can be downloaded and added to the template directory.
 
